@@ -1,0 +1,10 @@
+# CountryFullDTOListResult
+
+## Properties
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**countries** | [**\de\addvideo\client\model\CountryFullDTO[]**](CountryFullDTO.md) | List of entity objects. | 
+
+[[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
+
+

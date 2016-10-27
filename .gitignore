@@ -5,3 +5,5 @@
 /.buildpath
 /.project
 /.settings/
+/.swagger-codegen-ignore
+/addvideo.swagger.json
