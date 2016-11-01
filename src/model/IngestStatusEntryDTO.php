@@ -14,7 +14,7 @@
 /**
  * AddVideo REST API v1
  *
- * <h1>Welcome!</h1><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam</p><p>Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet.</p>
+ * <h1>Willkommen bei AddVideo | add video to your project</h1><p>Nutzen Sie die Technologie von AddVideo zur Verbindung von CMS- mit CDN-FunktionalitÃ¤ten. Mit AddVideo verarbeiten und distribuieren Sie Ihre Videoinhalte ganz nach Bedarf. Werden Sie und Ihre Anwendungen unabhÃ¤ngig von OberflÃ¤chen oder CDN-spezifischen Anforderungen. AddVideo bietet Ihnen:</p><ul><li>individuelle Nutzung durch Anbindung Ã¼ber Rest-API</li><li>Client SDKs in vielen Programmiersprachen frei verfÃ¼gbar unter http://github.com/addvideo</li><li>Media Processing und Video Encoding Services</li><li>Betrieb und Datenhaltung in Rechenzentren in Deutschland</li><li>Service und Betrieb durch ein erfahrenes Team von Videospezialisten in Frankfurt am Main</li><li>einen stetig wachsenden Funktionsumfang</li><li>eine stetig wachsende Anzahl an angebundenen CDNs</li><li>Nutzung von zahlreichen OTT-Funktionen Ã¼ber die API</li></ul><p>Bei AddVideo kÃ¶nnen Sie individuell selbst entscheiden, welche Bausteine Sie fÃ¼r Ihre Videoverwaltung benÃ¶tigen. Bestehende Systeme und LÃ¶sungen lassen sich komfortabel anbinden.</p>
  *
  * OpenAPI spec version: 1
  * Contact: info@addvideo.de
@@ -68,12 +68,12 @@ class IngestStatusEntryDTO implements ArrayAccess
       */
     protected static $swaggerTypes = array(
         'externalReferenceId' => 'string',
-        'downloadLink' => 'string',
-        'callbackUrl' => 'string',
+        'sourceUrl' => 'string',
+        'webhook' => 'string',
         'status' => 'string',
         'statusLog' => 'string[]',
         'entry' => '\de\addvideo\client\model\EntryIdDTO',
-        'callbackLog' => 'string[]'
+        'webhookLog' => 'string[]'
     );
 
     public static function swaggerTypes()
@@ -87,12 +87,12 @@ class IngestStatusEntryDTO implements ArrayAccess
      */
     protected static $attributeMap = array(
         'externalReferenceId' => 'external-reference-id',
-        'downloadLink' => 'download-link',
-        'callbackUrl' => 'callback-url',
+        'sourceUrl' => 'source-url',
+        'webhook' => 'webhook',
         'status' => 'status',
         'statusLog' => 'status-log',
         'entry' => 'entry',
-        'callbackLog' => 'callback-log'
+        'webhookLog' => 'webhook-log'
     );
 
     public static function attributeMap()
@@ -106,12 +106,12 @@ class IngestStatusEntryDTO implements ArrayAccess
      */
     protected static $setters = array(
         'externalReferenceId' => 'setExternalReferenceId',
-        'downloadLink' => 'setDownloadLink',
-        'callbackUrl' => 'setCallbackUrl',
+        'sourceUrl' => 'setSourceUrl',
+        'webhook' => 'setWebhook',
         'status' => 'setStatus',
         'statusLog' => 'setStatusLog',
         'entry' => 'setEntry',
-        'callbackLog' => 'setCallbackLog'
+        'webhookLog' => 'setWebhookLog'
     );
 
     public static function setters()
@@ -125,12 +125,12 @@ class IngestStatusEntryDTO implements ArrayAccess
      */
     protected static $getters = array(
         'externalReferenceId' => 'getExternalReferenceId',
-        'downloadLink' => 'getDownloadLink',
-        'callbackUrl' => 'getCallbackUrl',
+        'sourceUrl' => 'getSourceUrl',
+        'webhook' => 'getWebhook',
         'status' => 'getStatus',
         'statusLog' => 'getStatusLog',
         'entry' => 'getEntry',
-        'callbackLog' => 'getCallbackLog'
+        'webhookLog' => 'getWebhookLog'
     );
 
     public static function getters()
@@ -177,12 +177,12 @@ class IngestStatusEntryDTO implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['externalReferenceId'] = isset($data['externalReferenceId']) ? $data['externalReferenceId'] : null;
-        $this->container['downloadLink'] = isset($data['downloadLink']) ? $data['downloadLink'] : null;
-        $this->container['callbackUrl'] = isset($data['callbackUrl']) ? $data['callbackUrl'] : null;
+        $this->container['sourceUrl'] = isset($data['sourceUrl']) ? $data['sourceUrl'] : null;
+        $this->container['webhook'] = isset($data['webhook']) ? $data['webhook'] : null;
         $this->container['status'] = isset($data['status']) ? $data['status'] : null;
         $this->container['statusLog'] = isset($data['statusLog']) ? $data['statusLog'] : null;
         $this->container['entry'] = isset($data['entry']) ? $data['entry'] : null;
-        $this->container['callbackLog'] = isset($data['callbackLog']) ? $data['callbackLog'] : null;
+        $this->container['webhookLog'] = isset($data['webhookLog']) ? $data['webhookLog'] : null;
     }
 
     /**
@@ -193,11 +193,11 @@ class IngestStatusEntryDTO implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = array();
-        if ($this->container['downloadLink'] === null) {
-            $invalid_properties[] = "'downloadLink' can't be null";
+        if ($this->container['sourceUrl'] === null) {
+            $invalid_properties[] = "'sourceUrl' can't be null";
         }
-        if ($this->container['callbackUrl'] === null) {
-            $invalid_properties[] = "'callbackUrl' can't be null";
+        if ($this->container['webhook'] === null) {
+            $invalid_properties[] = "'webhook' can't be null";
         }
         $allowed_values = array("READY", "FLAVOR_READY", "CONVERTING", "ERROR", "INGESTING", "WAITING");
         if (!in_array($this->container['status'], $allowed_values)) {
@@ -215,10 +215,10 @@ class IngestStatusEntryDTO implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['downloadLink'] === null) {
+        if ($this->container['sourceUrl'] === null) {
             return false;
         }
-        if ($this->container['callbackUrl'] === null) {
+        if ($this->container['webhook'] === null) {
             return false;
         }
         $allowed_values = array("READY", "FLAVOR_READY", "CONVERTING", "ERROR", "INGESTING", "WAITING");
@@ -251,43 +251,43 @@ class IngestStatusEntryDTO implements ArrayAccess
     }
 
     /**
-     * Gets downloadLink
+     * Gets sourceUrl
      * @return string
      */
-    public function getDownloadLink()
+    public function getSourceUrl()
     {
-        return $this->container['downloadLink'];
+        return $this->container['sourceUrl'];
     }
 
     /**
-     * Sets downloadLink
-     * @param string $downloadLink Download link to download the sourcefile from.
+     * Sets sourceUrl
+     * @param string $sourceUrl Your source file url.
      * @return $this
      */
-    public function setDownloadLink($downloadLink)
+    public function setSourceUrl($sourceUrl)
     {
-        $this->container['downloadLink'] = $downloadLink;
+        $this->container['sourceUrl'] = $sourceUrl;
 
         return $this;
     }
 
     /**
-     * Gets callbackUrl
+     * Gets webhook
      * @return string
      */
-    public function getCallbackUrl()
+    public function getWebhook()
     {
-        return $this->container['callbackUrl'];
+        return $this->container['webhook'];
     }
 
     /**
-     * Sets callbackUrl
-     * @param string $callbackUrl URL to be triggered if a new status was reached.
+     * Sets webhook
+     * @param string $webhook URL to be triggered if a new status was reached.
      * @return $this
      */
-    public function setCallbackUrl($callbackUrl)
+    public function setWebhook($webhook)
     {
-        $this->container['callbackUrl'] = $callbackUrl;
+        $this->container['webhook'] = $webhook;
 
         return $this;
     }
@@ -360,22 +360,22 @@ class IngestStatusEntryDTO implements ArrayAccess
     }
 
     /**
-     * Gets callbackLog
+     * Gets webhookLog
      * @return string[]
      */
-    public function getCallbackLog()
+    public function getWebhookLog()
     {
-        return $this->container['callbackLog'];
+        return $this->container['webhookLog'];
     }
 
     /**
-     * Sets callbackLog
-     * @param string[] $callbackLog Containing information on calback activities. READ ONLY!
+     * Sets webhookLog
+     * @param string[] $webhookLog Containing information on webhook activities. READ ONLY!
      * @return $this
      */
-    public function setCallbackLog($callbackLog)
+    public function setWebhookLog($webhookLog)
     {
-        $this->container['callbackLog'] = $callbackLog;
+        $this->container['webhookLog'] = $webhookLog;
 
         return $this;
     }
