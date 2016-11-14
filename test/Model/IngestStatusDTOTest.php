@@ -14,7 +14,7 @@
 /**
  * AddVideo REST API v1
  *
- * <h1>Willkommen bei AddVideo | add video to your project</h1><p>Nutzen Sie die Technologie von AddVideo zur Verbindung von CMS- mit CDN-Funktionalitäten. Mit AddVideo verarbeiten und distribuieren Sie Ihre Videoinhalte ganz nach Bedarf. Werden Sie und Ihre Anwendungen unabhängig von Oberflächen oder CDN-spezifischen Anforderungen. AddVideo bietet Ihnen:</p><ul><li>individuelle Nutzung durch Anbindung über Rest-API</li><li>Client SDKs in vielen Programmiersprachen frei verfügbar unter http://github.com/addvideo</li><li>Media Processing und Video Encoding Services</li><li>Betrieb und Datenhaltung in Rechenzentren in Deutschland</li><li>Service und Betrieb durch ein erfahrenes Team von Videospezialisten in Frankfurt am Main</li><li>einen stetig wachsenden Funktionsumfang</li><li>eine stetig wachsende Anzahl an angebundenen CDNs</li><li>Nutzung von zahlreichen OTT-Funktionen über die API</li></ul><p>Bei AddVideo können Sie individuell selbst entscheiden, welche Bausteine Sie für Ihre Videoverwaltung benötigen. Bestehende Systeme und Lösungen lassen sich komfortabel anbinden.</p>
+ * <h1>Welcome to AddVideo | easy video integration into your project</h1><p>AddVideo offers the integration of professional online video services and capabilities such as CDN, encoding, asset management and complex distribution workflows  with your favourite CMS. AddVideo processes and distributes your video contents as required, without interface- or CDN-specific implementations. Using AddVideo you will get:</p><ul><li>API: a powerful REST-API with free client SDKs available in many different programming languages incl. examples at http://github.com/addvideo</li><li>Encoding: media processing and video encoding services</li><li>CDN: use diverse very powerful global CDNs to distribute your contents</li><li>OTT: access to useful functionalities via the API</li><li>Development, Service und Maintenance: our team of high class software engineers and online video specialists is located in Frankfurt/Germany</li><li>Powerfull Infrastructure: system operations in high class data centres in Germany</li><li>In General: a fast growing set of features</li></ul><p>It has never been easier to add professional video modules to your platform on demand. AddVideo helps to slimline your integration efforts and provides the whole video workflow accessible through a simple programming interface.</p>
  *
  * OpenAPI spec version: 1
  * Contact: info@addvideo.de
@@ -45,7 +45,7 @@ namespace de\addvideo\client;
  * IngestStatusDTOTest Class Doc Comment
  *
  * @category    Class */
-// * @description Status info on specific ingest job.
+// * @description Status information on a specific ingest job.
 /**
  * @package     de\addvideo\client
  * @author      http://github.com/swagger-api/swagger-codegen
@@ -91,6 +91,22 @@ class IngestStatusDTOTest extends \PHPUnit_Framework_TestCase
      * Test "IngestStatusDTO"
      */
     public function testIngestStatusDTO()
+    {
+
+    }
+
+    /**
+     * Test attribute "status"
+     */
+    public function testPropertyStatus()
+    {
+
+    }
+
+    /**
+     * Test attribute "message"
+     */
+    public function testPropertyMessage()
     {
 
     }

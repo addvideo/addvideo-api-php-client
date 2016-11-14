@@ -14,7 +14,7 @@
 /**
  * AddVideo REST API v1
  *
- * <h1>Welcome to AddVideo | easy video integration into your project</h1><p>Use our AddVideo services to add CDN-functionalitiy to your favorite CMS. AddVideo processes and distributes your video contents as required without interface- or CDN-specific implementations. Using AddVideo you get:</p><ul><li>API: a powerfull REST-API with client SDKs in many different programming languages incl. examples available for free at http://github.com/addvideo</li><li>Encoding: media processing and video encoding services</li><li>CDN: capabilities of diverse very powerful global CDNs</li><li>OTT: access to useful functionalities via the API</li><li>Development, Service und Maintenance: our team of high class software engineers and online video specialists is located in Frankfurt/Germany</li><li>Powerfull Infrastructure: operations in high class data centers in Germany</li><li>In General: a fast growing feature set</li></ul><p>It was never easier to add professional video modules to your platform on demand. AddVideo helps to slimline your integration efforts and provides the whole video workflow accesible through a simple programming interface.</p>
+ * <h1>Welcome to AddVideo | easy video integration into your project</h1><p>AddVideo offers the integration of professional online video services and capabilities such as CDN, encoding, asset management and complex distribution workflows  with your favourite CMS. AddVideo processes and distributes your video contents as required, without interface- or CDN-specific implementations. Using AddVideo you will get:</p><ul><li>API: a powerful REST-API with free client SDKs available in many different programming languages incl. examples at http://github.com/addvideo</li><li>Encoding: media processing and video encoding services</li><li>CDN: use diverse very powerful global CDNs to distribute your contents</li><li>OTT: access to useful functionalities via the API</li><li>Development, Service und Maintenance: our team of high class software engineers and online video specialists is located in Frankfurt/Germany</li><li>Powerfull Infrastructure: system operations in high class data centres in Germany</li><li>In General: a fast growing set of features</li></ul><p>It has never been easier to add professional video modules to your platform on demand. AddVideo helps to slimline your integration efforts and provides the whole video workflow accessible through a simple programming interface.</p>
  *
  * OpenAPI spec version: 1
  * Contact: info@addvideo.de
@@ -68,6 +68,8 @@ class PlayoutURLDTO implements ArrayAccess
       */
     protected static $swaggerTypes = array(
         'url' => 'string',
+        'label' => 'string',
+        'bitrate' => 'int',
         'protected' => 'bool'
     );
 
@@ -82,6 +84,8 @@ class PlayoutURLDTO implements ArrayAccess
      */
     protected static $attributeMap = array(
         'url' => 'url',
+        'label' => 'label',
+        'bitrate' => 'bitrate',
         'protected' => 'protected'
     );
 
@@ -96,6 +100,8 @@ class PlayoutURLDTO implements ArrayAccess
      */
     protected static $setters = array(
         'url' => 'setUrl',
+        'label' => 'setLabel',
+        'bitrate' => 'setBitrate',
         'protected' => 'setProtected'
     );
 
@@ -110,6 +116,8 @@ class PlayoutURLDTO implements ArrayAccess
      */
     protected static $getters = array(
         'url' => 'getUrl',
+        'label' => 'getLabel',
+        'bitrate' => 'getBitrate',
         'protected' => 'getProtected'
     );
 
@@ -135,6 +143,8 @@ class PlayoutURLDTO implements ArrayAccess
     public function __construct(array $data = null)
     {
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
+        $this->container['bitrate'] = isset($data['bitrate']) ? $data['bitrate'] : null;
         $this->container['protected'] = isset($data['protected']) ? $data['protected'] : false;
     }
 
@@ -178,6 +188,48 @@ class PlayoutURLDTO implements ArrayAccess
     public function setUrl($url)
     {
         $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
+     * @return string
+     */
+    public function getLabel()
+    {
+        return $this->container['label'];
+    }
+
+    /**
+     * Sets label
+     * @param string $label Label giving a hint about encoding.
+     * @return $this
+     */
+    public function setLabel($label)
+    {
+        $this->container['label'] = $label;
+
+        return $this;
+    }
+
+    /**
+     * Gets bitrate
+     * @return int
+     */
+    public function getBitrate()
+    {
+        return $this->container['bitrate'];
+    }
+
+    /**
+     * Sets bitrate
+     * @param int $bitrate Approximate target bitrate this file has been encoded with.
+     * @return $this
+     */
+    public function setBitrate($bitrate)
+    {
+        $this->container['bitrate'] = $bitrate;
 
         return $this;
     }

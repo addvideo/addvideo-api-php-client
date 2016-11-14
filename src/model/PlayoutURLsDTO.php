@@ -14,7 +14,7 @@
 /**
  * AddVideo REST API v1
  *
- * <h1>Welcome to AddVideo | easy video integration into your project</h1><p>Use our AddVideo services to add CDN-functionalitiy to your favorite CMS. AddVideo processes and distributes your video contents as required without interface- or CDN-specific implementations. Using AddVideo you get:</p><ul><li>API: a powerfull REST-API with client SDKs in many different programming languages incl. examples available for free at http://github.com/addvideo</li><li>Encoding: media processing and video encoding services</li><li>CDN: capabilities of diverse very powerful global CDNs</li><li>OTT: access to useful functionalities via the API</li><li>Development, Service und Maintenance: our team of high class software engineers and online video specialists is located in Frankfurt/Germany</li><li>Powerfull Infrastructure: operations in high class data centers in Germany</li><li>In General: a fast growing feature set</li></ul><p>It was never easier to add professional video modules to your platform on demand. AddVideo helps to slimline your integration efforts and provides the whole video workflow accesible through a simple programming interface.</p>
+ * <h1>Welcome to AddVideo | easy video integration into your project</h1><p>AddVideo offers the integration of professional online video services and capabilities such as CDN, encoding, asset management and complex distribution workflows  with your favourite CMS. AddVideo processes and distributes your video contents as required, without interface- or CDN-specific implementations. Using AddVideo you will get:</p><ul><li>API: a powerful REST-API with free client SDKs available in many different programming languages incl. examples at http://github.com/addvideo</li><li>Encoding: media processing and video encoding services</li><li>CDN: use diverse very powerful global CDNs to distribute your contents</li><li>OTT: access to useful functionalities via the API</li><li>Development, Service und Maintenance: our team of high class software engineers and online video specialists is located in Frankfurt/Germany</li><li>Powerfull Infrastructure: system operations in high class data centres in Germany</li><li>In General: a fast growing set of features</li></ul><p>It has never been easier to add professional video modules to your platform on demand. AddVideo helps to slimline your integration efforts and provides the whole video workflow accessible through a simple programming interface.</p>
  *
  * OpenAPI spec version: 1
  * Contact: info@addvideo.de
@@ -67,6 +67,8 @@ class PlayoutURLsDTO implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = array(
+        'status' => 'string',
+        'message' => 'string',
         'entry' => '\de\addvideo\client\model\EntryIdDTO',
         'playoutUrlsSet' => '\de\addvideo\client\model\PlayoutURLDTO[]'
     );
@@ -81,6 +83,8 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
+        'status' => 'status',
+        'message' => 'message',
         'entry' => 'entry',
         'playoutUrlsSet' => 'playout-urls-set'
     );
@@ -95,6 +99,8 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
+        'status' => 'setStatus',
+        'message' => 'setMessage',
         'entry' => 'setEntry',
         'playoutUrlsSet' => 'setPlayoutUrlsSet'
     );
@@ -109,6 +115,8 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
+        'status' => 'getStatus',
+        'message' => 'getMessage',
         'entry' => 'getEntry',
         'playoutUrlsSet' => 'getPlayoutUrlsSet'
     );
@@ -118,8 +126,22 @@ class PlayoutURLsDTO implements ArrayAccess
         return self::$getters;
     }
 
+    const STATUS_SUCCESS = 'success';
+    const STATUS_FAILED = 'failed';
     
 
+    
+    /**
+     * Gets allowable values of the enum
+     * @return string[]
+     */
+    public function getStatusAllowableValues()
+    {
+        return [
+            self::STATUS_SUCCESS,
+            self::STATUS_FAILED,
+        ];
+    }
     
 
     /**
@@ -134,6 +156,8 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
+        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
+        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['entry'] = isset($data['entry']) ? $data['entry'] : null;
         $this->container['playoutUrlsSet'] = isset($data['playoutUrlsSet']) ? $data['playoutUrlsSet'] : null;
     }
@@ -146,6 +170,14 @@ class PlayoutURLsDTO implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = array();
+        if ($this->container['status'] === null) {
+            $invalid_properties[] = "'status' can't be null";
+        }
+        $allowed_values = array("success", "failed");
+        if (!in_array($this->container['status'], $allowed_values)) {
+            $invalid_properties[] = "invalid value for 'status', must be one of #{allowed_values}.";
+        }
+
         return $invalid_properties;
     }
 
@@ -157,9 +189,62 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function valid()
     {
+        if ($this->container['status'] === null) {
+            return false;
+        }
+        $allowed_values = array("success", "failed");
+        if (!in_array($this->container['status'], $allowed_values)) {
+            return false;
+        }
         return true;
     }
 
+
+    /**
+     * Gets status
+     * @return string
+     */
+    public function getStatus()
+    {
+        return $this->container['status'];
+    }
+
+    /**
+     * Sets status
+     * @param string $status Status
+     * @return $this
+     */
+    public function setStatus($status)
+    {
+        $allowed_values = array('success', 'failed');
+        if (!in_array($status, $allowed_values)) {
+            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'success', 'failed'");
+        }
+        $this->container['status'] = $status;
+
+        return $this;
+    }
+
+    /**
+     * Gets message
+     * @return string
+     */
+    public function getMessage()
+    {
+        return $this->container['message'];
+    }
+
+    /**
+     * Sets message
+     * @param string $message Message
+     * @return $this
+     */
+    public function setMessage($message)
+    {
+        $this->container['message'] = $message;
+
+        return $this;
+    }
 
     /**
      * Gets entry

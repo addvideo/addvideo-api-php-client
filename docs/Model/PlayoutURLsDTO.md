@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**status** | **string** | Status | 
+**message** | **string** | Message | [optional] 
 **entry** | [**\de\addvideo\client\model\EntryIdDTO**](EntryIdDTO.md) | Entry this playout URLs have been generated for. | [optional] 
 **playoutUrlsSet** | [**\de\addvideo\client\model\PlayoutURLDTO[]**](PlayoutURLDTO.md) | Set of PlayoutURLDTO objects. | [optional] 
 

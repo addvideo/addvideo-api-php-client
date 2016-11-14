@@ -3,6 +3,8 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**status** | **string** | Status | 
+**message** | **string** | Message | [optional] 
 **ingestJobId** | **string** | Id of ingest job. | [optional] 
 **entries** | [**\de\addvideo\client\model\IngestStatusEntryDTO[]**](IngestStatusEntryDTO.md) | Entries | [optional] 
 
