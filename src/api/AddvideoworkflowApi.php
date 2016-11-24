@@ -213,6 +213,116 @@ class AddvideoworkflowApi
     }
 
     /**
+     * Operation getVideoPreviewThumbnailsURLs
+     *
+     * Get video preview thumbnails URLs for specififc entry.
+     *
+     * @param string $entryId Id of entry to retrieve video preview thumbnails URLs for (required)
+     * @return \de\addvideo\client\model\VideoPreviewThumbnailsURLsDTO
+     * @throws \de\addvideo\client\ApiException on non-2xx response
+     */
+    public function getVideoPreviewThumbnailsURLs($entryId)
+    {
+        list($response) = $this->getVideoPreviewThumbnailsURLsWithHttpInfo($entryId);
+        return $response;
+    }
+
+    /**
+     * Operation getVideoPreviewThumbnailsURLsWithHttpInfo
+     *
+     * Get video preview thumbnails URLs for specififc entry.
+     *
+     * @param string $entryId Id of entry to retrieve video preview thumbnails URLs for (required)
+     * @return Array of \de\addvideo\client\model\VideoPreviewThumbnailsURLsDTO, HTTP status code, HTTP response headers (array of strings)
+     * @throws \de\addvideo\client\ApiException on non-2xx response
+     */
+    public function getVideoPreviewThumbnailsURLsWithHttpInfo($entryId)
+    {
+        // verify the required parameter 'entryId' is set
+        if ($entryId === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $entryId when calling getVideoPreviewThumbnailsURLs');
+        }
+        // parse inputs
+        $resourcePath = "/addvideo/workflow/playout/getVideoPreviewThumbnailsURLs/{entry-id}";
+        $httpBody = '';
+        $queryParams = array();
+        $headerParams = array();
+        $formParams = array();
+        $_header_accept = $this->apiClient->selectHeaderAccept(array('application/json'));
+        if (!is_null($_header_accept)) {
+            $headerParams['Accept'] = $_header_accept;
+        }
+        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(array('application/json'));
+
+        // path params
+        if ($entryId !== null) {
+            $resourcePath = str_replace(
+                "{" . "entry-id" . "}",
+                $this->apiClient->getSerializer()->toPathValue($entryId),
+                $resourcePath
+            );
+        }
+        // default format to json
+        $resourcePath = str_replace("{format}", "json", $resourcePath);
+
+        
+        // for model (json/xml)
+        if (isset($_tempBody)) {
+            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
+        } elseif (count($formParams) > 0) {
+            $httpBody = $formParams; // for HTTP post (form)
+        }
+        // this endpoint requires API key authentication
+        $apiKey = $this->apiClient->getApiKeyWithPrefix('Authorization');
+        if (strlen($apiKey) !== 0) {
+            $headerParams['Authorization'] = $apiKey;
+        }
+        // make the API Call
+        try {
+            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
+                $resourcePath,
+                'GET',
+                $queryParams,
+                $httpBody,
+                $headerParams,
+                '\de\addvideo\client\model\VideoPreviewThumbnailsURLsDTO',
+                '/addvideo/workflow/playout/getVideoPreviewThumbnailsURLs/{entry-id}'
+            );
+
+            return array($this->apiClient->getSerializer()->deserialize($response, '\de\addvideo\client\model\VideoPreviewThumbnailsURLsDTO', $httpHeader), $statusCode, $httpHeader);
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\de\addvideo\client\model\VideoPreviewThumbnailsURLsDTO', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\de\addvideo\client\model\APIResultDTO', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\de\addvideo\client\model\APIResultDTO', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\de\addvideo\client\model\APIResultDTO', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 405:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\de\addvideo\client\model\APIResultDTO', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+                case 500:
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\de\addvideo\client\model\APIResultDTO', $e->getResponseHeaders());
+                    $e->setResponseObject($data);
+                    break;
+            }
+
+            throw $e;
+        }
+    }
+
+    /**
      * Operation ingest
      *
      * Ingest new video

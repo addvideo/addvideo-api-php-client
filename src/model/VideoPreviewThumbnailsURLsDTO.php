@@ -1,6 +1,6 @@
 <?php
 /**
- * PlayoutURLsDTO
+ * VideoPreviewThumbnailsURLsDTO
  *
  * PHP version 5
  *
@@ -44,33 +44,30 @@ namespace de\addvideo\client\model;
 use \ArrayAccess;
 
 /**
- * PlayoutURLsDTO Class Doc Comment
+ * VideoPreviewThumbnailsURLsDTO Class Doc Comment
  *
  * @category    Class */
- // @description Result object containing playout URLs.
 /** 
  * @package     de\addvideo\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PlayoutURLsDTO implements ArrayAccess
+class VideoPreviewThumbnailsURLsDTO implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PlayoutURLsDTO';
+    protected static $swaggerModelName = 'VideoPreviewThumbnailsURLsDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'status' => 'string',
-        'message' => 'string',
         'entry' => '\de\addvideo\client\model\EntryIdDTO',
-        'playoutUrlsSet' => '\de\addvideo\client\model\PlayoutURLDTO[]'
+        'videoPreviewThumbnailsUrlsSet' => '\de\addvideo\client\model\VideoPreviewThumbnailURLDTO[]'
     );
 
     public static function swaggerTypes()
@@ -83,10 +80,8 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'status' => 'status',
-        'message' => 'message',
         'entry' => 'entry',
-        'playoutUrlsSet' => 'playout-urls-set'
+        'videoPreviewThumbnailsUrlsSet' => 'video-preview-thumbnails-urls-set'
     );
 
     public static function attributeMap()
@@ -99,10 +94,8 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'status' => 'setStatus',
-        'message' => 'setMessage',
         'entry' => 'setEntry',
-        'playoutUrlsSet' => 'setPlayoutUrlsSet'
+        'videoPreviewThumbnailsUrlsSet' => 'setVideoPreviewThumbnailsUrlsSet'
     );
 
     public static function setters()
@@ -115,10 +108,8 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'status' => 'getStatus',
-        'message' => 'getMessage',
         'entry' => 'getEntry',
-        'playoutUrlsSet' => 'getPlayoutUrlsSet'
+        'videoPreviewThumbnailsUrlsSet' => 'getVideoPreviewThumbnailsUrlsSet'
     );
 
     public static function getters()
@@ -126,22 +117,8 @@ class PlayoutURLsDTO implements ArrayAccess
         return self::$getters;
     }
 
-    const STATUS_SUCCESS = 'success';
-    const STATUS_FAILED = 'failed';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_SUCCESS,
-            self::STATUS_FAILED,
-        ];
-    }
     
 
     /**
@@ -156,10 +133,8 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
         $this->container['entry'] = isset($data['entry']) ? $data['entry'] : null;
-        $this->container['playoutUrlsSet'] = isset($data['playoutUrlsSet']) ? $data['playoutUrlsSet'] : null;
+        $this->container['videoPreviewThumbnailsUrlsSet'] = isset($data['videoPreviewThumbnailsUrlsSet']) ? $data['videoPreviewThumbnailsUrlsSet'] : null;
     }
 
     /**
@@ -170,14 +145,12 @@ class PlayoutURLsDTO implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = array();
-        if ($this->container['status'] === null) {
-            $invalid_properties[] = "'status' can't be null";
+        if ($this->container['entry'] === null) {
+            $invalid_properties[] = "'entry' can't be null";
         }
-        $allowed_values = array("success", "failed");
-        if (!in_array($this->container['status'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'status', must be one of #{allowed_values}.";
+        if ($this->container['videoPreviewThumbnailsUrlsSet'] === null) {
+            $invalid_properties[] = "'videoPreviewThumbnailsUrlsSet' can't be null";
         }
-
         return $invalid_properties;
     }
 
@@ -189,62 +162,15 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['status'] === null) {
+        if ($this->container['entry'] === null) {
             return false;
         }
-        $allowed_values = array("success", "failed");
-        if (!in_array($this->container['status'], $allowed_values)) {
+        if ($this->container['videoPreviewThumbnailsUrlsSet'] === null) {
             return false;
         }
         return true;
     }
 
-
-    /**
-     * Gets status
-     * @return string
-     */
-    public function getStatus()
-    {
-        return $this->container['status'];
-    }
-
-    /**
-     * Sets status
-     * @param string $status Status
-     * @return $this
-     */
-    public function setStatus($status)
-    {
-        $allowed_values = array('success', 'failed');
-        if (!in_array($status, $allowed_values)) {
-            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'success', 'failed'");
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     * @param string $message Message
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
 
     /**
      * Gets entry
@@ -257,7 +183,7 @@ class PlayoutURLsDTO implements ArrayAccess
 
     /**
      * Sets entry
-     * @param \de\addvideo\client\model\EntryIdDTO $entry Entry these playout URLs have been generated for.
+     * @param \de\addvideo\client\model\EntryIdDTO $entry Entry these thumbnail URLs have been generated for.
      * @return $this
      */
     public function setEntry($entry)
@@ -268,22 +194,22 @@ class PlayoutURLsDTO implements ArrayAccess
     }
 
     /**
-     * Gets playoutUrlsSet
-     * @return \de\addvideo\client\model\PlayoutURLDTO[]
+     * Gets videoPreviewThumbnailsUrlsSet
+     * @return \de\addvideo\client\model\VideoPreviewThumbnailURLDTO[]
      */
-    public function getPlayoutUrlsSet()
+    public function getVideoPreviewThumbnailsUrlsSet()
     {
-        return $this->container['playoutUrlsSet'];
+        return $this->container['videoPreviewThumbnailsUrlsSet'];
     }
 
     /**
-     * Sets playoutUrlsSet
-     * @param \de\addvideo\client\model\PlayoutURLDTO[] $playoutUrlsSet Set of PlayoutURLDTO objects.
+     * Sets videoPreviewThumbnailsUrlsSet
+     * @param \de\addvideo\client\model\VideoPreviewThumbnailURLDTO[] $videoPreviewThumbnailsUrlsSet Set of VideoPreviewThumbnailURLDTO objects.
      * @return $this
      */
-    public function setPlayoutUrlsSet($playoutUrlsSet)
+    public function setVideoPreviewThumbnailsUrlsSet($videoPreviewThumbnailsUrlsSet)
     {
-        $this->container['playoutUrlsSet'] = $playoutUrlsSet;
+        $this->container['videoPreviewThumbnailsUrlsSet'] = $videoPreviewThumbnailsUrlsSet;
 
         return $this;
     }

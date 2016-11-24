@@ -1,6 +1,6 @@
 <?php
 /**
- * PlayoutURLsDTO
+ * VideoPreviewThumbnailURLDTO
  *
  * PHP version 5
  *
@@ -44,33 +44,33 @@ namespace de\addvideo\client\model;
 use \ArrayAccess;
 
 /**
- * PlayoutURLsDTO Class Doc Comment
+ * VideoPreviewThumbnailURLDTO Class Doc Comment
  *
  * @category    Class */
- // @description Result object containing playout URLs.
+ // @description Thumbnail data of an entry.
 /** 
  * @package     de\addvideo\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PlayoutURLsDTO implements ArrayAccess
+class VideoPreviewThumbnailURLDTO implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PlayoutURLsDTO';
+    protected static $swaggerModelName = 'VideoPreviewThumbnailURLDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'status' => 'string',
-        'message' => 'string',
-        'entry' => '\de\addvideo\client\model\EntryIdDTO',
-        'playoutUrlsSet' => '\de\addvideo\client\model\PlayoutURLDTO[]'
+        'url' => 'string',
+        'dimensions' => '\de\addvideo\client\model\DimensionsDTO',
+        'imageFileFormat' => 'string',
+        'fileSize' => 'int'
     );
 
     public static function swaggerTypes()
@@ -83,10 +83,10 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'status' => 'status',
-        'message' => 'message',
-        'entry' => 'entry',
-        'playoutUrlsSet' => 'playout-urls-set'
+        'url' => 'url',
+        'dimensions' => 'dimensions',
+        'imageFileFormat' => 'image-file-format',
+        'fileSize' => 'file-size'
     );
 
     public static function attributeMap()
@@ -99,10 +99,10 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'status' => 'setStatus',
-        'message' => 'setMessage',
-        'entry' => 'setEntry',
-        'playoutUrlsSet' => 'setPlayoutUrlsSet'
+        'url' => 'setUrl',
+        'dimensions' => 'setDimensions',
+        'imageFileFormat' => 'setImageFileFormat',
+        'fileSize' => 'setFileSize'
     );
 
     public static function setters()
@@ -115,10 +115,10 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'status' => 'getStatus',
-        'message' => 'getMessage',
-        'entry' => 'getEntry',
-        'playoutUrlsSet' => 'getPlayoutUrlsSet'
+        'url' => 'getUrl',
+        'dimensions' => 'getDimensions',
+        'imageFileFormat' => 'getImageFileFormat',
+        'fileSize' => 'getFileSize'
     );
 
     public static function getters()
@@ -126,22 +126,8 @@ class PlayoutURLsDTO implements ArrayAccess
         return self::$getters;
     }
 
-    const STATUS_SUCCESS = 'success';
-    const STATUS_FAILED = 'failed';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_SUCCESS,
-            self::STATUS_FAILED,
-        ];
-    }
     
 
     /**
@@ -156,10 +142,10 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['entry'] = isset($data['entry']) ? $data['entry'] : null;
-        $this->container['playoutUrlsSet'] = isset($data['playoutUrlsSet']) ? $data['playoutUrlsSet'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['dimensions'] = isset($data['dimensions']) ? $data['dimensions'] : null;
+        $this->container['imageFileFormat'] = isset($data['imageFileFormat']) ? $data['imageFileFormat'] : null;
+        $this->container['fileSize'] = isset($data['fileSize']) ? $data['fileSize'] : null;
     }
 
     /**
@@ -170,14 +156,9 @@ class PlayoutURLsDTO implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = array();
-        if ($this->container['status'] === null) {
-            $invalid_properties[] = "'status' can't be null";
+        if ($this->container['url'] === null) {
+            $invalid_properties[] = "'url' can't be null";
         }
-        $allowed_values = array("success", "failed");
-        if (!in_array($this->container['status'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'status', must be one of #{allowed_values}.";
-        }
-
         return $invalid_properties;
     }
 
@@ -189,11 +170,7 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['status'] === null) {
-            return false;
-        }
-        $allowed_values = array("success", "failed");
-        if (!in_array($this->container['status'], $allowed_values)) {
+        if ($this->container['url'] === null) {
             return false;
         }
         return true;
@@ -201,89 +178,85 @@ class PlayoutURLsDTO implements ArrayAccess
 
 
     /**
-     * Gets status
+     * Gets url
      * @return string
      */
-    public function getStatus()
+    public function getUrl()
     {
-        return $this->container['status'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets status
-     * @param string $status Status
+     * Sets url
+     * @param string $url URL of thumbnail on CDN. Can be used to deliver thumbnails to users.
      * @return $this
      */
-    public function setStatus($status)
+    public function setUrl($url)
     {
-        $allowed_values = array('success', 'failed');
-        if (!in_array($status, $allowed_values)) {
-            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'success', 'failed'");
-        }
-        $this->container['status'] = $status;
+        $this->container['url'] = $url;
 
         return $this;
     }
 
     /**
-     * Gets message
+     * Gets dimensions
+     * @return \de\addvideo\client\model\DimensionsDTO
+     */
+    public function getDimensions()
+    {
+        return $this->container['dimensions'];
+    }
+
+    /**
+     * Sets dimensions
+     * @param \de\addvideo\client\model\DimensionsDTO $dimensions Dimensions of thumbnail.
+     * @return $this
+     */
+    public function setDimensions($dimensions)
+    {
+        $this->container['dimensions'] = $dimensions;
+
+        return $this;
+    }
+
+    /**
+     * Gets imageFileFormat
      * @return string
      */
-    public function getMessage()
+    public function getImageFileFormat()
     {
-        return $this->container['message'];
+        return $this->container['imageFileFormat'];
     }
 
     /**
-     * Sets message
-     * @param string $message Message
+     * Sets imageFileFormat
+     * @param string $imageFileFormat Image file format of thumbnail according to <a href='http://www.iana.org/assignments/media-types/media-types.xhtml' target='_blank'>MIME Media Types</a> definitions.
      * @return $this
      */
-    public function setMessage($message)
+    public function setImageFileFormat($imageFileFormat)
     {
-        $this->container['message'] = $message;
+        $this->container['imageFileFormat'] = $imageFileFormat;
 
         return $this;
     }
 
     /**
-     * Gets entry
-     * @return \de\addvideo\client\model\EntryIdDTO
+     * Gets fileSize
+     * @return int
      */
-    public function getEntry()
+    public function getFileSize()
     {
-        return $this->container['entry'];
+        return $this->container['fileSize'];
     }
 
     /**
-     * Sets entry
-     * @param \de\addvideo\client\model\EntryIdDTO $entry Entry these playout URLs have been generated for.
+     * Sets fileSize
+     * @param int $fileSize Size of file in bytes.
      * @return $this
      */
-    public function setEntry($entry)
+    public function setFileSize($fileSize)
     {
-        $this->container['entry'] = $entry;
-
-        return $this;
-    }
-
-    /**
-     * Gets playoutUrlsSet
-     * @return \de\addvideo\client\model\PlayoutURLDTO[]
-     */
-    public function getPlayoutUrlsSet()
-    {
-        return $this->container['playoutUrlsSet'];
-    }
-
-    /**
-     * Sets playoutUrlsSet
-     * @param \de\addvideo\client\model\PlayoutURLDTO[] $playoutUrlsSet Set of PlayoutURLDTO objects.
-     * @return $this
-     */
-    public function setPlayoutUrlsSet($playoutUrlsSet)
-    {
-        $this->container['playoutUrlsSet'] = $playoutUrlsSet;
+        $this->container['fileSize'] = $fileSize;
 
         return $this;
     }

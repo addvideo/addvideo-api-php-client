@@ -1,6 +1,6 @@
 <?php
 /**
- * PlayoutURLsDTO
+ * DimensionsDTO
  *
  * PHP version 5
  *
@@ -44,33 +44,32 @@ namespace de\addvideo\client\model;
 use \ArrayAccess;
 
 /**
- * PlayoutURLsDTO Class Doc Comment
+ * DimensionsDTO Class Doc Comment
  *
  * @category    Class */
- // @description Result object containing playout URLs.
+ // @description Dimensions of a visual object, e.g. preview thumbnail or video.
 /** 
  * @package     de\addvideo\client
  * @author      http://github.com/swagger-api/swagger-codegen
  * @license     http://www.apache.org/licenses/LICENSE-2.0 Apache Licene v2
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class PlayoutURLsDTO implements ArrayAccess
+class DimensionsDTO implements ArrayAccess
 {
     /**
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'PlayoutURLsDTO';
+    protected static $swaggerModelName = 'DimensionsDTO';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = array(
-        'status' => 'string',
-        'message' => 'string',
-        'entry' => '\de\addvideo\client\model\EntryIdDTO',
-        'playoutUrlsSet' => '\de\addvideo\client\model\PlayoutURLDTO[]'
+        'width' => 'int',
+        'height' => 'int',
+        'label' => 'string'
     );
 
     public static function swaggerTypes()
@@ -83,10 +82,9 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = array(
-        'status' => 'status',
-        'message' => 'message',
-        'entry' => 'entry',
-        'playoutUrlsSet' => 'playout-urls-set'
+        'width' => 'width',
+        'height' => 'height',
+        'label' => 'label'
     );
 
     public static function attributeMap()
@@ -99,10 +97,9 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $setters = array(
-        'status' => 'setStatus',
-        'message' => 'setMessage',
-        'entry' => 'setEntry',
-        'playoutUrlsSet' => 'setPlayoutUrlsSet'
+        'width' => 'setWidth',
+        'height' => 'setHeight',
+        'label' => 'setLabel'
     );
 
     public static function setters()
@@ -115,10 +112,9 @@ class PlayoutURLsDTO implements ArrayAccess
      * @var string[]
      */
     protected static $getters = array(
-        'status' => 'getStatus',
-        'message' => 'getMessage',
-        'entry' => 'getEntry',
-        'playoutUrlsSet' => 'getPlayoutUrlsSet'
+        'width' => 'getWidth',
+        'height' => 'getHeight',
+        'label' => 'getLabel'
     );
 
     public static function getters()
@@ -126,22 +122,8 @@ class PlayoutURLsDTO implements ArrayAccess
         return self::$getters;
     }
 
-    const STATUS_SUCCESS = 'success';
-    const STATUS_FAILED = 'failed';
     
 
-    
-    /**
-     * Gets allowable values of the enum
-     * @return string[]
-     */
-    public function getStatusAllowableValues()
-    {
-        return [
-            self::STATUS_SUCCESS,
-            self::STATUS_FAILED,
-        ];
-    }
     
 
     /**
@@ -156,10 +138,9 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['status'] = isset($data['status']) ? $data['status'] : null;
-        $this->container['message'] = isset($data['message']) ? $data['message'] : null;
-        $this->container['entry'] = isset($data['entry']) ? $data['entry'] : null;
-        $this->container['playoutUrlsSet'] = isset($data['playoutUrlsSet']) ? $data['playoutUrlsSet'] : null;
+        $this->container['width'] = isset($data['width']) ? $data['width'] : null;
+        $this->container['height'] = isset($data['height']) ? $data['height'] : null;
+        $this->container['label'] = isset($data['label']) ? $data['label'] : null;
     }
 
     /**
@@ -170,14 +151,12 @@ class PlayoutURLsDTO implements ArrayAccess
     public function listInvalidProperties()
     {
         $invalid_properties = array();
-        if ($this->container['status'] === null) {
-            $invalid_properties[] = "'status' can't be null";
+        if ($this->container['width'] === null) {
+            $invalid_properties[] = "'width' can't be null";
         }
-        $allowed_values = array("success", "failed");
-        if (!in_array($this->container['status'], $allowed_values)) {
-            $invalid_properties[] = "invalid value for 'status', must be one of #{allowed_values}.";
+        if ($this->container['height'] === null) {
+            $invalid_properties[] = "'height' can't be null";
         }
-
         return $invalid_properties;
     }
 
@@ -189,11 +168,10 @@ class PlayoutURLsDTO implements ArrayAccess
      */
     public function valid()
     {
-        if ($this->container['status'] === null) {
+        if ($this->container['width'] === null) {
             return false;
         }
-        $allowed_values = array("success", "failed");
-        if (!in_array($this->container['status'], $allowed_values)) {
+        if ($this->container['height'] === null) {
             return false;
         }
         return true;
@@ -201,89 +179,64 @@ class PlayoutURLsDTO implements ArrayAccess
 
 
     /**
-     * Gets status
+     * Gets width
+     * @return int
+     */
+    public function getWidth()
+    {
+        return $this->container['width'];
+    }
+
+    /**
+     * Sets width
+     * @param int $width Width of object.
+     * @return $this
+     */
+    public function setWidth($width)
+    {
+        $this->container['width'] = $width;
+
+        return $this;
+    }
+
+    /**
+     * Gets height
+     * @return int
+     */
+    public function getHeight()
+    {
+        return $this->container['height'];
+    }
+
+    /**
+     * Sets height
+     * @param int $height Height of object.
+     * @return $this
+     */
+    public function setHeight($height)
+    {
+        $this->container['height'] = $height;
+
+        return $this;
+    }
+
+    /**
+     * Gets label
      * @return string
      */
-    public function getStatus()
+    public function getLabel()
     {
-        return $this->container['status'];
+        return $this->container['label'];
     }
 
     /**
-     * Sets status
-     * @param string $status Status
+     * Sets label
+     * @param string $label Dimensions label for convenience purposes, e.g. 1920x1080, 1280x720 etc..
      * @return $this
      */
-    public function setStatus($status)
+    public function setLabel($label)
     {
-        $allowed_values = array('success', 'failed');
-        if (!in_array($status, $allowed_values)) {
-            throw new \InvalidArgumentException("Invalid value for 'status', must be one of 'success', 'failed'");
-        }
-        $this->container['status'] = $status;
-
-        return $this;
-    }
-
-    /**
-     * Gets message
-     * @return string
-     */
-    public function getMessage()
-    {
-        return $this->container['message'];
-    }
-
-    /**
-     * Sets message
-     * @param string $message Message
-     * @return $this
-     */
-    public function setMessage($message)
-    {
-        $this->container['message'] = $message;
-
-        return $this;
-    }
-
-    /**
-     * Gets entry
-     * @return \de\addvideo\client\model\EntryIdDTO
-     */
-    public function getEntry()
-    {
-        return $this->container['entry'];
-    }
-
-    /**
-     * Sets entry
-     * @param \de\addvideo\client\model\EntryIdDTO $entry Entry these playout URLs have been generated for.
-     * @return $this
-     */
-    public function setEntry($entry)
-    {
-        $this->container['entry'] = $entry;
-
-        return $this;
-    }
-
-    /**
-     * Gets playoutUrlsSet
-     * @return \de\addvideo\client\model\PlayoutURLDTO[]
-     */
-    public function getPlayoutUrlsSet()
-    {
-        return $this->container['playoutUrlsSet'];
-    }
-
-    /**
-     * Sets playoutUrlsSet
-     * @param \de\addvideo\client\model\PlayoutURLDTO[] $playoutUrlsSet Set of PlayoutURLDTO objects.
-     * @return $this
-     */
-    public function setPlayoutUrlsSet($playoutUrlsSet)
-    {
-        $this->container['playoutUrlsSet'] = $playoutUrlsSet;
+        $this->container['label'] = $label;
 
         return $this;
     }
