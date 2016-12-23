@@ -70,6 +70,8 @@ class PlayoutURLDTO implements ArrayAccess
         'url' => 'string',
         'label' => 'string',
         'bitrate' => 'int',
+        'targetVideoBitrate' => 'int',
+        'targetAudioBitrate' => 'int',
         'protected' => 'bool'
     );
 
@@ -86,6 +88,8 @@ class PlayoutURLDTO implements ArrayAccess
         'url' => 'url',
         'label' => 'label',
         'bitrate' => 'bitrate',
+        'targetVideoBitrate' => 'target-video-bitrate',
+        'targetAudioBitrate' => 'target-audio-bitrate',
         'protected' => 'protected'
     );
 
@@ -102,6 +106,8 @@ class PlayoutURLDTO implements ArrayAccess
         'url' => 'setUrl',
         'label' => 'setLabel',
         'bitrate' => 'setBitrate',
+        'targetVideoBitrate' => 'setTargetVideoBitrate',
+        'targetAudioBitrate' => 'setTargetAudioBitrate',
         'protected' => 'setProtected'
     );
 
@@ -118,6 +124,8 @@ class PlayoutURLDTO implements ArrayAccess
         'url' => 'getUrl',
         'label' => 'getLabel',
         'bitrate' => 'getBitrate',
+        'targetVideoBitrate' => 'getTargetVideoBitrate',
+        'targetAudioBitrate' => 'getTargetAudioBitrate',
         'protected' => 'getProtected'
     );
 
@@ -145,6 +153,8 @@ class PlayoutURLDTO implements ArrayAccess
         $this->container['url'] = isset($data['url']) ? $data['url'] : null;
         $this->container['label'] = isset($data['label']) ? $data['label'] : null;
         $this->container['bitrate'] = isset($data['bitrate']) ? $data['bitrate'] : null;
+        $this->container['targetVideoBitrate'] = isset($data['targetVideoBitrate']) ? $data['targetVideoBitrate'] : null;
+        $this->container['targetAudioBitrate'] = isset($data['targetAudioBitrate']) ? $data['targetAudioBitrate'] : null;
         $this->container['protected'] = isset($data['protected']) ? $data['protected'] : false;
     }
 
@@ -224,12 +234,54 @@ class PlayoutURLDTO implements ArrayAccess
 
     /**
      * Sets bitrate
-     * @param int $bitrate Approximate target bitrate this file has been encoded with.
+     * @param int $bitrate Rounded overall bitrate this file has been encoded in.
      * @return $this
      */
     public function setBitrate($bitrate)
     {
         $this->container['bitrate'] = $bitrate;
+
+        return $this;
+    }
+
+    /**
+     * Gets targetVideoBitrate
+     * @return int
+     */
+    public function getTargetVideoBitrate()
+    {
+        return $this->container['targetVideoBitrate'];
+    }
+
+    /**
+     * Sets targetVideoBitrate
+     * @param int $targetVideoBitrate Video target bitrate this file has been encoded with.
+     * @return $this
+     */
+    public function setTargetVideoBitrate($targetVideoBitrate)
+    {
+        $this->container['targetVideoBitrate'] = $targetVideoBitrate;
+
+        return $this;
+    }
+
+    /**
+     * Gets targetAudioBitrate
+     * @return int
+     */
+    public function getTargetAudioBitrate()
+    {
+        return $this->container['targetAudioBitrate'];
+    }
+
+    /**
+     * Sets targetAudioBitrate
+     * @param int $targetAudioBitrate Audio target bitrate this file has been encoded with.
+     * @return $this
+     */
+    public function setTargetAudioBitrate($targetAudioBitrate)
+    {
+        $this->container['targetAudioBitrate'] = $targetAudioBitrate;
 
         return $this;
     }
